@@ -1,12 +1,13 @@
 {
-  "version": 2,
   "buildCommand": "npm run build",
-  "functions": {
-    "api/index.js": {
-      "includeFiles": "frontend/myapp/dist/**"
-    }
-  },
+  "outputDirectory": "frontend/myapp/dist",
   "rewrites": [
-    { "source": "/(.*)", "destination": "/api/index.js" }
+    { "source": "/auth/(.*)", "destination": "/api/index.js" },
+    { "source": "/summary", "destination": "/api/index.js" },
+    { "source": "/athletes", "destination": "/api/index.js" },
+    { "source": "/regions", "destination": "/api/index.js" },
+    { "source": "/analytics/(.*)", "destination": "/api/index.js" },
+    { "source": "/health", "destination": "/api/index.js" },
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
