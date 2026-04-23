@@ -1,0 +1,6 @@
+
+> backend@1.0.0 start
+> node server.js
+
+MongoDB connected.
+Server listening on http://localhost:5000

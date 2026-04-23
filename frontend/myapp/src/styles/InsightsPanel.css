@@ -1,0 +1,41 @@
+.insights-panel {
+  max-width: 1400px;
+  margin: 0 auto 24px;
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.insight-card {
+  grid-column: span 6;
+  background: #ffffff;
+  border: 1px solid #d9e4f8;
+  border-radius: 16px;
+  padding: 16px 18px;
+  box-shadow: 0 10px 26px rgba(26, 58, 110, 0.1);
+}
+
+.insight-card.large {
+  grid-column: span 12;
+}
+
+.insight-card h3 {
+  margin: 0 0 12px 0;
+  color: #243f70;
+  font-size: 1.05rem;
+}
+
+.insights-error {
+  color: #9b2121;
+  border: 1px solid #f2b6b6;
+  background: #fff4f4;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+@media (max-width: 1024px) {
+  .insight-card,
+  .insight-card.large {
+    grid-column: span 12;
+  }
+}

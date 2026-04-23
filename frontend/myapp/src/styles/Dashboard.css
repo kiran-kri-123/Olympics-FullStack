@@ -1,0 +1,101 @@
+.dashboard {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 15% -10%, rgba(47, 103, 213, 0.16), transparent 48%),
+    radial-gradient(circle at 92% 8%, rgba(75, 179, 181, 0.13), transparent 42%),
+    linear-gradient(180deg, #f8fbff 0%, #eef4ff 58%, #e9f1ff 100%);
+  padding: 18px;
+}
+
+.dashboard-topbar {
+  max-width: 1400px;
+  margin: 0 auto 16px;
+  border: 1px solid #d6e2f8;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 14px 28px rgba(20, 50, 96, 0.11);
+  padding: 16px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.dashboard-topbar h1 {
+  margin: 0;
+  font-size: 1.62rem;
+  color: #172f58;
+}
+
+.dashboard-subtitle {
+  margin: 6px 0 0 0;
+  color: #48648f;
+}
+
+.dashboard-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-chip {
+  background: #eaf1ff;
+  color: #1f4174;
+  border: 1px solid #bfd1f5;
+  border-radius: 999px;
+  padding: 8px 12px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.topbar-button {
+  border: none;
+  background: #2f67d5;
+  color: #fff;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.topbar-button.secondary {
+  background: #edf3ff;
+  color: #214173;
+  border: 1px solid #c0d2f6;
+}
+
+.dashboard-content {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+@media (max-width: 1180px) {
+  .dashboard-topbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .dashboard-actions {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 1024px) {
+  .dashboard-content {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard {
+    padding: 12px;
+  }
+
+  .dashboard-topbar h1 {
+    font-size: 1.25rem;
+  }
+}

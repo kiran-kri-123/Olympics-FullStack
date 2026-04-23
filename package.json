@@ -1,0 +1,22 @@
+{
+  "name": "olympics-fullstack",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm --prefix backend test && npm --prefix frontend/myapp test",
+    "test:backend": "npm --prefix backend test",
+    "test:frontend": "npm --prefix frontend/myapp test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "csv-parser": "^3.2.0",
+    "express": "^5.2.1",
+    "fs": "^0.0.1-security",
+    "mongoose": "^9.4.1"
+  }
+}
