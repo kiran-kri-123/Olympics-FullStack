@@ -1,6 +1,8 @@
 const express = require("express");
 const cors = require("cors");
 const crypto = require("crypto");
+const fs = require("fs");
+const path = require("path");
 const mongoose = require("mongoose");
 const { promisify } = require("util");
 
@@ -16,6 +18,7 @@ loadEnvFile();
 const app = express();
 const PORT = process.env.PORT || 5000;
 const TOKEN_SECRET = process.env.AUTH_TOKEN_SECRET;
+const FRONTEND_DIST_PATH = path.join(__dirname, "../frontend/myapp/dist");
 const TOKEN_TTL_SECONDS = 60 * 60 * 8;
 const AUTH_COOKIE_NAME = "olympics_session";
 const DEFAULT_FRONTEND_ORIGINS = ["http://localhost:5173", "http://127.0.0.1:5173"];
@@ -54,6 +57,13 @@ app.use(
   })
 );
 app.use(express.json());
+app.use((req, res, next) => {
+  if (req.url === "/api" || req.url.startsWith("/api/")) {
+    req.url = req.url.slice(4) || "/";
+  }
+  next();
+});
+app.use(express.static(FRONTEND_DIST_PATH));
 
 async function createPasswordHash(password) {
   const salt = crypto.randomBytes(16).toString("hex");
@@ -818,7 +828,19 @@ app.get("/health", async (req, res) => {
 });
 
 app.get("/", (req, res) => {
-  res.send("Olympics API running with MongoDB");
+  const indexPath = path.join(FRONTEND_DIST_PATH, "index.html");
+  if (fs.existsSync(indexPath)) {
+    return res.sendFile(indexPath);
+  }
+  return res.send("Olympics API running with MongoDB");
+});
+
+app.get(/.*/, (req, res) => {
+  const indexPath = path.join(FRONTEND_DIST_PATH, "index.html");
+  if (fs.existsSync(indexPath)) {
+    return res.sendFile(indexPath);
+  }
+  return res.status(404).json({ message: "Route not found." });
 });
 
 async function startServer() {
